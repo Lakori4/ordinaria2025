@@ -1,25 +1,24 @@
-import { useSignal } from "@preact/signals";
-import Counter from "../islands/Counter.tsx";
+import { Character } from "../utils/types.ts";
+import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
+import CharacterGrid from "../components/CharacterGrid.tsx";
 
-export default function Home() {
-  const count = useSignal(3);
+
+
+export const handler: Handlers  = {
+    GET: async (_req, ctx: FreshContext<unknown, Character[]>) => {
+
+        const json = await fetch("https://hp-api.onrender.com/api/characters");
+        const response:Character[] = await json.json()
+        return ctx.render(response)
+    }
+}
+
+const Home = ( props: PageProps) => {
+
+    
   return (
-    <div class="px-4 py-8 mx-auto bg-[#86efac]">
-      <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
-        <img
-          class="my-6"
-          src="/logo.svg"
-          width="128"
-          height="128"
-          alt="the Fresh logo: a sliced lemon dripping with juice"
-        />
-        <h1 class="text-4xl font-bold">Welcome to Fresh</h1>
-        <p class="my-4">
-          Try updating this message in the
-          <code class="mx-2">./routes/index.tsx</code> file, and refresh.
-        </p>
-        <Counter count={count} />
-      </div>
-    </div>
+    <CharacterGrid chars={props.data}/>
   );
 }
+
+export default Home
