@@ -10,7 +10,7 @@ const CharacterDetail:FunctionalComponent<{char: Character}> = (props) => {
     useEffect(() => {
     const cookie = document.cookie.split("favorites=")[1].split(";")[0]
         if (cookie) {
-            if (JSON.parse((cookie)) as Character[]) {
+            if (JSON.parse((cookie)) as Character) {
             setFav("star fav")
         } else {
             setFav("star")
@@ -21,7 +21,13 @@ const CharacterDetail:FunctionalComponent<{char: Character}> = (props) => {
 
     useEffect(() => {
         if (fav !== "star fav") {
-            document.cookie = `favorites=${(JSON.stringify(props.char))}`
+            document.cookie = `favorites=${(JSON.stringify(props.char))}; path=/;`
+            console.log("cookie creada")
+        } else if (fav === "star fav") {
+
+            const date = new Date();
+            date.setTime(date.getTime() - 60 * 1000)
+            document.cookie = `favorites=${(JSON.stringify(props.char))}; expires${date.toUTCString()}; path=/;`
             console.log("cookie creada")
         }
     }, [fav])
