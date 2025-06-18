@@ -6,7 +6,7 @@ const Header: FunctionComponent = () => {
     return (
         <div class="header">
             <a href="/">Todos</a>
-            <a href="/favoritos">Favoritos</a>
+            <a href="/favorites">Favoritos</a>
         </div>
     )
 }
