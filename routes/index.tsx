@@ -15,7 +15,7 @@ export const handler: Handlers  = {
 
 const Home = ( props: PageProps) => {
 
-    
+
   return (
     <CharacterGrid chars={props.data}/>
   );

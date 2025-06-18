@@ -2,14 +2,18 @@ import { FunctionalComponent } from "preact/src/index.d.ts";
 import { Character } from "../utils/types.ts";
 import CharacterCard from "../islands/CharacterCard.tsx";
 
+type chars = {
+    chars: Character[]
+}
 
 
-const CharacterGrid: FunctionalComponent<{chars: Character[]}> = (props) => {
+const CharacterGrid: FunctionalComponent<{chars: Character[]}> = (chars) => {
 
-    console.log(props.chars[0].name)
+    console.log(chars.chars[0])
+
     return (
         <div class="grid">
-            {props.chars.map(c => {<CharacterCard char={c}/>})}
+            {chars.chars.map(c => <CharacterCard char={c} key={c.id}/>)}
         </div>
     )
 }
