@@ -1,6 +1,6 @@
 import { FunctionalComponent } from "preact/src/index.d.ts";
 import { Character } from "../utils/types.ts";
-import CharacterCard from "../islands/CharacterCard.tsx";
+import CharacterCard from "./CharacterCard.tsx";
 
 
 const CharacterGrid: FunctionalComponent<{chars: Character[]}> = (chars) => {
