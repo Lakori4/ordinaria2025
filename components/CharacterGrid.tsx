@@ -4,8 +4,6 @@ import CharacterCard from "../islands/CharacterCard.tsx";
 
 
 const CharacterGrid: FunctionalComponent<{chars: Character[]}> = (chars) => {
-
-    console.log(chars.chars[0])
     return (
         <div class="grid">
             {chars.chars.map(c => <CharacterCard char={c} key={c.id}/>)}
