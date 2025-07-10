@@ -1,6 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
 import { FunctionalComponent } from "preact/src/index.d.ts";
-import { Character } from "../utils/types.ts";
 
 
 
